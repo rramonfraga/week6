@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DeviceAuth</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <nav>
+    <div class="container">
+      <div class="nav pull-right">
+        <% if current_user %> 
+          <ul> 
+            <li><%= link_to current_user.name, "/users/#{current_user.id}" %></li> 
+            <li><%= link_to "Log out", destroy_user_session_path %></li>
+          </ul> 
+        <% else %> 
+          <ul> 
+            <li><%= link_to "Log In", new_user_session %></a></li> 
+            <li><%= link_to "Register", new_user_registration %></a></li> 
+          </ul> 
+        <% end %>
+      </div>
+    </div>
+  </nav>
+
+<%= yield %>
+
+</body>
+</html>
